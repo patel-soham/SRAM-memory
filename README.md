@@ -8,5 +8,5 @@ A project to implement simple SRAM synchronous positive edge memory.
 1. [Memory (Design)](memory.v)
 2. [Test Bench (top)](tb_memory.v)
 3. [Run.do](run.do)
-4. [Image file for backdoor read](iamge_wr.hex)
-5. [Image file for backdoor write](iamge_rd.hex)
+4. [Image file for backdoor read](image_wr.hex)
+5. [Image file for backdoor write](image_rd.hex)
