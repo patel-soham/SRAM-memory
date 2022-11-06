@@ -1,4 +1,17 @@
 // Simple SRAM synchronous positive edge code
+
+/* 
+INPUTS
+	1. clk - Clock.
+	2. rst - Reset.
+	3. addr - Address bus
+	4. wdata - Data bus to perform write operation
+	5. wr_en - Write enable signal. HIGH to perfrom write operation and LOW for read.
+	6. valid - Signal to request memory for a transaction
+OUTPUTS
+	1. ready - Signal indicating memory is ready to perfrom transcation in response to 'valid' request
+	2. rdata - Data bus to perform read operation.
+*/
 module memory(clk, rst, addr, wdata, wr_en, valid, ready, rdata);
 
 parameter ADDR_WIDTH=3; // addr bus width to access memory
