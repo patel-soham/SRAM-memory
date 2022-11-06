@@ -2,10 +2,10 @@
 module tb;
 
 parameter ADDR_WIDTH=6, // addr bus width to access memory
- 		  DEPTH=64, // total no of locations in memory
-		  WIDTH=16, // size of each location in memmory
-		  MIN=1, // Min delay for random read write test
-		  MAX=10; // Max delay for random read write test
+ 	  DEPTH=64, // total no of locations in memory
+	  WIDTH=16, // size of each location in memmory
+	  MIN=1, // Min delay for random read write test
+	  MAX=10; // Max delay for random read write test
 
 // rst = Active high synchronous reset
 reg clk, rst, wr_en, valid; 
