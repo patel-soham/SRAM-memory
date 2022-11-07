@@ -4,8 +4,9 @@ module tb;
 parameter ADDR_WIDTH=6, // addr bus width to access memory
  	  DEPTH=64, // total no of locations in memory
 	  WIDTH=16, // size of each location in memmory
-	  MIN=1, // Min delay for random read write test
-	  MAX=10; // Max delay for random read write test
+	  MIN=1, // Min iterations for random read write test for either operation at a time
+	  MAX=6, // Max iterations for random read write test for either operation at a time
+	  TOTAL_CYCLES=10; // Total number of read and write random iterations for random wr/rd test case
 
 // rst = Active high synchronous reset
 reg clk, rst, wr_en, valid; 
@@ -13,7 +14,7 @@ reg [ADDR_WIDTH-1:0] addr;
 reg [WIDTH-1:0] wdata;
 wire [WIDTH-1:0] rdata;
 wire ready;
-integer i, j, k, l, random_wr, wr_delay, random_rd, rd_delay;
+integer i, j, k, random_address;
 reg [30*8:1] testname;
 
 memory #(.WIDTH(WIDTH), .ADDR_WIDTH(ADDR_WIDTH), .DEPTH(DEPTH)) u0 (.clk(clk), .rst(rst), .wr_en(wr_en), .valid(valid), .addr(addr), .wdata(wdata), .rdata(rdata), .ready(ready));
@@ -32,12 +33,7 @@ initial begin
 	i = 0;
 	j = 0;
 	k = 0;
-	l = 0;
-	random_wr = 0;
-	wr_delay = 0;
-	random_rd = 0;
-	rd_delay = 0;
-
+	random_address = 0;
 
 	rst = 1;
 	#20
@@ -64,28 +60,22 @@ initial begin
 			bd_read_memory(0, DEPTH-1);
 		end
 		// front door random read wrtie operations. 
-		// total operations here are equal to size of DEPTH variable, but can be modified
+		// total operations here are equal to TOTAL_CYCLES 
+		// each operation can repeat anywhere from MIN to MAX time before another
 		"random_wr_rd" : begin
-			fork
-
-			begin
-				for (j = 0; j < DEPTH; j = j+1) begin
-					random_wr = $urandom_range(0, DEPTH-1);
-					fd_write_memory(random_wr, 0); // writing to only location at a time
-					wr_delay = $urandom_range(MIN, MAX);
-					repeat(wr_delay) @ (posedge clk);
+				for (j = 0; j < TOTAL_CYCLES; j = j+1) begin
+					repeat ($urandom_range(MIN, MAX)) begin
+						random_address = $urandom_range(0, DEPTH-1); // pick any random address to write
+						fd_write_memory(random_address, 0); // writing to only location at a time
+						repeat (2) @ (posedge clk); // wait for # clock edge before performing another round
+					end
+					
+					repeat ($urandom_range(MIN, MAX)) begin
+						random_address = $urandom_range(0, DEPTH-1); // pick any random address to read
+						fd_read_memory(random_address, 0); // reading from only one location at a time
+						repeat (2) @ (posedge clk); // wait for # clock edge before performing another round
+					end
 				end
-			end
-			begin
-				for (l = 0; l < DEPTH; l = l+1) begin
-					random_rd = $urandom_range(0, DEPTH-1);
-					fd_read_memory(random_rd, 0); // reading from only one location at a time
-					rd_delay = $urandom_range(MIN, MAX);
-					repeat(rd_delay) @ (posedge clk);
-				end
-			end
-
-			join
 		end
 	endcase
 			
