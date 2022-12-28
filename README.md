@@ -5,6 +5,6 @@ A project to implement and test simple SRAM synchronous positive edge memory.
 
 ---
 **Files**
-1. [Verilog](Verilog/)
-2. [System Verilog](System Verilog/)
+1. [Verilog](Verilog)
+2. [System Verilog](System Verilog)
 
