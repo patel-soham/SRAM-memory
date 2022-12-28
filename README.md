@@ -1,7 +1,7 @@
 # SRAM Memory using Verilog
 A project to implement and test simple SRAM synchronous positive edge memory.
-- Developed a testbench to verify functioning of the design and used Modelsim software for compilation and simulation.
-- Performed various test cases with frontdoor access and backdoor access along with random read write tests. 
+- Design made using Verilog and Testbench made in 2 versions: System Verilog and Verilog.
+- Developed testcases to verify functioning of the design and used Questasim software for compilation and simulation. Test cases also includes frontdoor access and backdoor access along with random read write tests.
 
 ---
 **Files**
