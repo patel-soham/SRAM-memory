@@ -1,5 +1,4 @@
 # Files
-
 1. [Memory (Design)](memory.v)
 2. [Test Bench (top)](tb_memory.v)
 3. [Run.do](run.do)
