@@ -1,4 +1,80 @@
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /headers_svh_unit/mem_cov/mem_cg                 100.0%        100    Covered              
+    covered/total bins:                                    32         32                      
+    missing/total bins:                                     0         32                      
+    % Hit:                                             100.0%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(1)
+    Coverpoint mem_cg::ADDR_CP                         100.0%        100    Covered              
+        covered/total bins:                                10         10                      
+        missing/total bins:                                 0         10                      
+        % Hit:                                         100.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0:5]                                       6          1    Covered              
+        bin auto[6:11]                                      8          1    Covered              
+        bin auto[12:17]                                     2          1    Covered              
+        bin auto[18:23]                                     2          1    Covered              
+        bin auto[24:29]                                     6          1    Covered              
+        bin auto[30:35]                                     6          1    Covered              
+        bin auto[36:41]                                     4          1    Covered              
+        bin auto[42:47]                                     8          1    Covered              
+        bin auto[48:53]                                    12          1    Covered              
+        bin auto[54:63]                                     6          1    Covered              
+    Coverpoint mem_cg::WR_RD_CP                        100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                        30          1    Covered              
+        bin auto[1]                                        30          1    Covered              
+    Cross mem_cg::WR_RD_ADDR_CROSS                     100.0%        100    Covered              
+        covered/total bins:                                20         20                      
+        missing/total bins:                                 0         20                      
+        % Hit:                                         100.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <auto[0],auto[0:5]>                             3          1    Covered              
+        bin <auto[1],auto[0:5]>                             3          1    Covered              
+        bin <auto[0],auto[6:11]>                            4          1    Covered              
+        bin <auto[1],auto[6:11]>                            4          1    Covered              
+        bin <auto[0],auto[12:17]>                           1          1    Covered              
+        bin <auto[1],auto[12:17]>                           1          1    Covered              
+        bin <auto[0],auto[18:23]>                           1          1    Covered              
+        bin <auto[1],auto[18:23]>                           1          1    Covered              
+        bin <auto[0],auto[24:29]>                           3          1    Covered              
+        bin <auto[1],auto[24:29]>                           3          1    Covered              
+        bin <auto[0],auto[30:35]>                           3          1    Covered              
+        bin <auto[1],auto[30:35]>                           3          1    Covered              
+        bin <auto[0],auto[36:41]>                           2          1    Covered              
+        bin <auto[1],auto[36:41]>                           2          1    Covered              
+        bin <auto[0],auto[42:47]>                           4          1    Covered              
+        bin <auto[1],auto[42:47]>                           4          1    Covered              
+        bin <auto[0],auto[48:53]>                           6          1    Covered              
+        bin <auto[1],auto[48:53]>                           6          1    Covered              
+        bin <auto[0],auto[54:63]>                           3          1    Covered              
+        bin <auto[1],auto[54:63]>                           3          1    Covered              
+ CLASS mem_cov
 
 TOTAL COVERGROUP COVERAGE: 100.0%  COVERGROUP TYPES: 1
 
-TOTAL ASSERTION COVERAGE: 100.0%  ASSERTIONS: 2
+ASSERTION RESULTS:
+-------------------------------------------------------
+Name                 File(Line)           Failure Pass 
+                                          Count   Count 
+-------------------------------------------------------
+/tb_top/#ublk#128478048#28/immed__35
+                     top.sv(35)                 0     1
+/headers_svh_unit/mem_gen/run/#ublk#103406292#24/immed__27
+                     mem_gen.sv(27)             0     1
