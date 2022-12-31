@@ -14,4 +14,4 @@
 13. [Agent](mem_agent.sv)
 14.   [BFM/Driver](mem_bfm.sv)
 15.   [Generator](mem_gen.sv)
-16.     [Memory Transaction class](mem_tx.sv)
+16.    [Memory Transaction class](mem_tx.sv)
